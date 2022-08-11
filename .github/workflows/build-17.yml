@@ -24,14 +24,16 @@ jobs:
       - name: Patch source
         run: sed -i '/sudo apt/d' ci_build_global.sh
 
-      - name: set up JDK 17
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
 
       - name: Build with CI build script
-        run: bash ci_build_arch_${{ matrix.arch }}.sh
+        run: |
+          tree /usr/local/lib/android/sdk/ndk/
+          bash ci_build_arch_${{ matrix.arch }}.sh
 
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
