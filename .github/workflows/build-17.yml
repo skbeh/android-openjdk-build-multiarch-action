@@ -22,7 +22,9 @@ jobs:
           ref: buildjre17
 
       - name: Patch source
-        run: sed -i '/sudo apt/d' ci_build_global.sh
+        run: |
+          sed -i '/sudo apt/d' ci_build_global.sh
+          sed -i '/cd termux-elf-cleaner/a ./configure' tarjdk.sh
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -34,6 +36,7 @@ jobs:
         run: |
           unset ANDROID_NDK_ROOT
           bash ci_build_arch_${{ matrix.arch }}.sh
+          ln -s 
 
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
