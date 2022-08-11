@@ -10,20 +10,21 @@ jobs:
   build_android:
     strategy:
       matrix:
-        arch: ["aarch32", "aarch64", "x86", "x86_64"]
+        arch: [aarch32, aarch64, x86, x86_64]
 
-    name: "Build for Android ${{ matrix.arch }}"
+    name: Build for Android ${{ matrix.arch }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: "PojavLauncherTeam/android-openjdk-build-multiarch"
+          repository: PojavLauncherTeam/android-openjdk-build-multiarch
+          ref: buildjre17
 
       - name: set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: "temurin"
+          distribution: temurin
           java-version: 17
 
       - name: Build with CI build script
@@ -32,19 +33,19 @@ jobs:
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
         with:
-          name: "jdk17-${{ matrix.arch }}"
+          name: jdk17-${{ matrix.arch }}
           path: jdk17*.tar.xz
 
       - name: Upload JRE build output
         uses: actions/upload-artifact@v3
         with:
-          name: "jre17-${{ matrix.arch }}"
+          name: jre17-${{ matrix.arch }}
           path: jre17*.tar.xz
 
-      - name: Upload JRE debuginfo build output
+      - name: Upload JRE debug info build output
         uses: actions/upload-artifact@v3
         with:
-          name: "jre17-debuginfo-${{ matrix.arch }}"
+          name: jre17-debuginfo-${{ matrix.arch }}
           path: dizout
 
   pojav:
@@ -54,7 +55,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: "PojavLauncherTeam/android-openjdk-build-multiarch"
+          repository: PojavLauncherTeam/android-openjdk-build-multiarch
+          ref: buildjre17
 
       - name: Get jre17-aarch32
         uses: actions/download-artifact@v3
