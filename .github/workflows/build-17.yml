@@ -25,6 +25,7 @@ jobs:
         run: |
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i '/cd termux-elf-cleaner/a ./configure' tarjdk.sh
+          sudo ln -sf /usr/bin/objcopy /usr/bin/llvm-objcopy
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
