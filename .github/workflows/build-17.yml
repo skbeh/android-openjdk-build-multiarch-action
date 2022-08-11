@@ -23,6 +23,7 @@ jobs:
 
       - name: Patch source
         run: |
+          sed -i '/export NDK_VERSION/c export NDK_VERSION=r22b' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i '/cd termux-elf-cleaner/a ./configure' tarjdk.sh
           sudo ln -sf /usr/bin/objcopy /usr/bin/llvm-objcopy
