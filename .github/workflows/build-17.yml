@@ -24,7 +24,7 @@ jobs:
       - name: Patch source
         run: |
           sudo apt update
-          sudo apt install autoconf-archive
+          sudo apt install gettext
           sed -i '/export NDK_VERSION/c export NDK_VERSION=r21e' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i '/cd termux-elf-cleaner/a autoconf; ./configure' tarjdk.sh
