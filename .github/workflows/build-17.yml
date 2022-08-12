@@ -26,7 +26,6 @@ jobs:
           sed -i '/export NDK_VERSION/c export NDK_VERSION=r21e' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i '/cd termux-elf-cleaner/a autoconf; ./configure' tarjdk.sh
-          sudo ln -sf /usr/bin/objcopy /usr/bin/llvm-objcopy
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -37,6 +36,7 @@ jobs:
       - name: Build with CI build script
         run: |
           unset ANDROID_NDK_ROOT
+          export OBJCOPY=llvm-objcopy
           bash ci_build_arch_${{ matrix.arch }}.sh
           ln -s 
 
