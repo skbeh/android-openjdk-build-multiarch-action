@@ -26,6 +26,7 @@ jobs:
           sed -i '/export NDK_VERSION/c export NDK_VERSION=r21e' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i '/cd termux-elf-cleaner/a autoreconf --install; ./configure' tarjdk.sh
+          sed -i 's/__ANDROID_API__=24/' tarjdk.sh
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
