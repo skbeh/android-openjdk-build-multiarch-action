@@ -23,7 +23,7 @@ jobs:
 
       - name: Patch source
         run: |
-          sed -i '/export NDK_VERSION/c export NDK_VERSION=r23c' setdevkitpath.sh
+          sed -i '/export NDK_VERSION/c export NDK_VERSION=r25' setdevkitpath.sh
           sed -i 's/2.2.4/2.3.3/' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i 's/-linux-x86_64.zip/-linux.zip/g' ci_build_global.sh extractndk.sh
