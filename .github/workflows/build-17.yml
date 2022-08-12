@@ -37,7 +37,7 @@ jobs:
       - name: Build with CI build script
         run: |
           unset ANDROID_NDK_ROOT
-          export OBJCOPY=llvm-objcopy
+          export OBJCOPY=llvm-objcopy BUILD_FREETYPE_VERSION=2.12.1 EXTRA_ARGS='--with-brotli=no'
           bash ci_build_arch_${{ matrix.arch }}.sh
 
       - name: Upload JDK build output
