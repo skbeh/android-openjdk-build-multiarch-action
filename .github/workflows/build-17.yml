@@ -39,7 +39,6 @@ jobs:
           unset ANDROID_NDK_ROOT
           export OBJCOPY=llvm-objcopy
           bash ci_build_arch_${{ matrix.arch }}.sh
-          ln -s 
 
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
