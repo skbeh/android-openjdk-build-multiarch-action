@@ -27,6 +27,7 @@ jobs:
           sed -i 's/2.2.4/2.3.3/' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
           sed -i 's/-linux-x86_64.zip/-linux.zip/g' ci_build_global.sh extractndk.sh
+          sed -i 's/make-standalone-toolchain.sh/make-standalone-toolchain.py/; s/platform=android-21/api=21/' maketoolchain.sh
           sed -i '/cd termux-elf-cleaner/a autoreconf --install; ./configure' tarjdk.sh
           sed -i 's/__ANDROID_API__=24//' tarjdk.sh
 
