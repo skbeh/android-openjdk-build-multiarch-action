@@ -25,7 +25,7 @@ jobs:
         run: |
           sed -i '/export NDK_VERSION/c export NDK_VERSION=r21e' setdevkitpath.sh
           sed -i '/sudo apt/d' ci_build_global.sh
-          sed -i '/cd termux-elf-cleaner/a ./configure' tarjdk.sh
+          sed -i '/cd termux-elf-cleaner/a autoconf; ./configure' tarjdk.sh
           sudo ln -sf /usr/bin/objcopy /usr/bin/llvm-objcopy
 
       - name: Set up JDK 17
