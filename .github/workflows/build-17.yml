@@ -61,22 +61,10 @@ jobs:
           repository: PojavLauncherTeam/android-openjdk-build-multiarch
           ref: buildjre17
 
-      - name: Get jre17-aarch32
-        uses: actions/download-artifact@v3
-        with:
-          name: jre17-aarch32
-          path: pojav
-
       - name: Get jre17-aarch64
         uses: actions/download-artifact@v3
         with:
           name: jre17-aarch64
-          path: pojav
-
-      - name: Get jre17-x86
-        uses: actions/download-artifact@v3
-        with:
-          name: jre17-x86
           path: pojav
 
       - name: Get jre17-x86_64
