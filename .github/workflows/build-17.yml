@@ -31,7 +31,7 @@ jobs:
         run: |
           unset ANDROID_NDK_ROOT
           export BUILD_FREETYPE_VERSION=2.12.1 EXTRA_ARGS='--with-brotli=no'
-          bash ci_build_arch_${{ matrix.arch }}.sh || cat "$(find -name ad_arm.cpp)"
+          bash ci_build_arch_${{ matrix.arch }}.sh || cat $(find -name ad_arm.cpp)
 
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
