@@ -30,7 +30,6 @@ jobs:
       - name: Build with CI build script
         run: |
           unset ANDROID_NDK_ROOT
-          sudo ln -sf "$GITHUB_WORKSPACE"/android-ndk-r25/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objcopy /usr/bin/objcopy
           bash ci_build_arch_${{ matrix.arch }}.sh
 
       - name: Upload JDK build output
