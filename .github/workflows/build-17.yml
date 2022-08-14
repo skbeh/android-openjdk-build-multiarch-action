@@ -59,7 +59,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: PojavLauncherTeam/android-openjdk-build-multiarch
+          repository: skbeh/android-openjdk-build-multiarch
           ref: buildjre17
 
       - name: Get jre17-aarch64
