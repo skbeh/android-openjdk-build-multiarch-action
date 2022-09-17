@@ -10,7 +10,7 @@ jobs:
   build_android:
     strategy:
       matrix:
-        arch: [aarch32, aarch64, x86, x86_64]
+        arch: [aarch64, x86_64]
 
     name: Build for Android ${{ matrix.arch }}
     runs-on: ubuntu-22.04
@@ -30,8 +30,9 @@ jobs:
       - name: Build with CI build script
         run: |
           unset ANDROID_NDK_ROOT
-          export BUILD_FREETYPE_VERSION=2.12.1 EXTRA_ARGS='--with-brotli=no'
-          bash ci_build_arch_${{ matrix.arch }}.sh || cat "$(find -name ad_arm.cpp)"
+          git config --global user.email 'github-actions@users.noreply.github.com'
+          git config --global user.name 'github-actions'
+          bash ci_build_arch_${{ matrix.arch }}.sh
 
       - name: Upload JDK build output
         uses: actions/upload-artifact@v3
@@ -52,25 +53,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: PojavLauncherTeam/android-openjdk-build-multiarch
+          repository: skbeh/android-openjdk-build-multiarch
           ref: buildjre17
-
-      - name: Get jre17-aarch32
-        uses: actions/download-artifact@v3
-        with:
-          name: jre17-aarch32
-          path: pojav
 
       - name: Get jre17-aarch64
         uses: actions/download-artifact@v3
         with:
           name: jre17-aarch64
-          path: pojav
-
-      - name: Get jre17-x86
-        uses: actions/download-artifact@v3
-        with:
-          name: jre17-x86
           path: pojav
 
       - name: Get jre17-x86_64
