@@ -45,12 +45,6 @@ jobs:
           name: jre17-${{ matrix.arch }}
           path: jre17*.tar.xz
 
-      - name: Upload JRE debug info build output
-        uses: actions/upload-artifact@v3
-        with:
-          name: jre17-debuginfo-${{ matrix.arch }}
-          path: dizout
-
   pojav:
     needs: build_android
     runs-on: ubuntu-22.04
