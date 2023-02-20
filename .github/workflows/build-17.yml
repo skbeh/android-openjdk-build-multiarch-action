@@ -2,7 +2,7 @@ name: Build OpenJDK 17 for Android
 
 on:
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 0 */2 * *
   push:
   workflow_dispatch:
 
